@@ -1,5 +1,6 @@
 <div class="container mx-auto px-4 py-8">
     <div class="text-2xl font-bold mb-4 text-center">UEFA Euro 2024</div>
+    <div class="text-2xl font-bold mt-8 mb-4">Group stage</div>
     <div class="grid grid-cols-2 gap-4">
         @foreach ($games as $game)
         <div class="flex flex-col justify-between bg-gray-900 text-white p-4 rounded-lg hover:cursor-pointer" wire:click="selectGame({{ $game->id }})">
@@ -24,6 +25,114 @@
                 <div>{{ $game->date }}</div>
             </div>
         </div>
+        @endforeach
+    </div>
+
+    {{-- Round of 16 --}}
+    <div class="text-2xl font-bold mt-8 mb-4">Round of 16</div>
+    <div class="grid grid-cols-2 gap-4 mb-8">
+        @foreach ($roundOf16Games as $game)
+            <div class="flex flex-col justify-between bg-gray-900 text-white p-4 rounded-lg hover:cursor-pointer" wire:click="selectGame({{ $game->id }})">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center">
+                        <img src="https://flagcdn.com/w40/{{ $game->team1_flag }}.png" alt="{{ $game->team1_name }}" class="w-6 h-6 mr-2">
+                        <span>{{ $game->team1_name }}</span>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="https://flagcdn.com/w40/{{ $game->team2_flag }}.png" alt="{{ $game->team2_name }}" class="w-6 h-6 mr-2">
+                        <span>{{ $game->team2_name }}</span>
+                    </div>
+                </div>
+                @if ($game->score1 !== null && $game->score2 !== null)
+                <div class="text-center font-bold">{{ $game->score1 }} - {{ $game->score2 }}</div>
+                @else
+                <div class="text-center font-bold">-- - --</div>
+                @endif
+                <div class="text-right">
+                    <div>{{ $game->date }}</div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+    {{-- Quarter final--}}
+    <div class="text-2xl font-bold mt-8 mb-4">Quarter Final</div>
+    <div class="grid grid-cols-2 gap-4 mb-8">
+        @foreach ($quarterFinalGames as $game)
+            <div class="flex flex-col justify-between bg-gray-900 text-white p-4 rounded-lg hover:cursor-pointer" wire:click="selectGame({{ $game->id }})">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center">
+                        <img src="https://flagcdn.com/w40/{{ $game->team1_flag }}.png" alt="{{ $game->team1_name }}" class="w-6 h-6 mr-2">
+                        <span>{{ $game->team1_name }}</span>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="https://flagcdn.com/w40/{{ $game->team2_flag }}.png" alt="{{ $game->team2_name }}" class="w-6 h-6 mr-2">
+                        <span>{{ $game->team2_name }}</span>
+                    </div>
+                </div>
+                @if ($game->score1 !== null && $game->score2 !== null)
+                <div class="text-center font-bold">{{ $game->score1 }} - {{ $game->score2 }}</div>
+                @else
+                <div class="text-center font-bold">-- - --</div>
+                @endif
+                <div class="text-right">
+                    <div>{{ $game->date }}</div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+    {{-- Semi-final --}}
+    <div class="text-2xl font-bold mt-8 mb-4">Semi Final</div>
+    <div class="grid grid-cols-2 gap-4 mb-8">
+        @foreach ($semiFinalGames as $game)
+            <div class="flex flex-col justify-between bg-gray-900 text-white p-4 rounded-lg hover:cursor-pointer" wire:click="selectGame({{ $game->id }})">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center">
+                        <img src="https://flagcdn.com/w40/{{ $game->team1_flag }}.png" alt="{{ $game->team1_name }}" class="w-6 h-6 mr-2">
+                        <span>{{ $game->team1_name }}</span>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="https://flagcdn.com/w40/{{ $game->team2_flag }}.png" alt="{{ $game->team2_name }}" class="w-6 h-6 mr-2">
+                        <span>{{ $game->team2_name }}</span>
+                    </div>
+                </div>
+                @if ($game->score1 !== null && $game->score2 !== null)
+                <div class="text-center font-bold">{{ $game->score1 }} - {{ $game->score2 }}</div>
+                @else
+                <div class="text-center font-bold">-- - --</div>
+                @endif
+                <div class="text-right">
+                    <div>{{ $game->date }}</div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+    {{-- Final --}}
+    <div class="text-2xl font-bold mt-8 mb-4">Final</div>
+    <div class="grid grid-cols-2 gap-4 mb-8">
+        @foreach ($finalGames as $game)
+            <div class="flex flex-col justify-between bg-gray-900 text-white p-4 rounded-lg hover:cursor-pointer" wire:click="selectGame({{ $game->id }})">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center">
+                        <img src="https://flagcdn.com/w40/{{ $game->team1_flag }}.png" alt="{{ $game->team1_name }}" class="w-6 h-6 mr-2">
+                        <span>{{ $game->team1_name }}</span>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="https://flagcdn.com/w40/{{ $game->team2_flag }}.png" alt="{{ $game->team2_name }}" class="w-6 h-6 mr-2">
+                        <span>{{ $game->team2_name }}</span>
+                    </div>
+                </div>
+                @if ($game->score1 !== null && $game->score2 !== null)
+                <div class="text-center font-bold">{{ $game->score1 }} - {{ $game->score2 }}</div>
+                @else
+                <div class="text-center font-bold">-- - --</div>
+                @endif
+                <div class="text-right">
+                    <div>{{ $game->date }}</div>
+                </div>
+            </div>
         @endforeach
     </div>
 

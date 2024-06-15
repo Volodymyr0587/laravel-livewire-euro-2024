@@ -47,13 +47,37 @@ class Games extends Component
 
     public function render()
     {
-        $games = Game::all()->map(function ($game) {
+        $games = Game::where('stage', 'group_stage')->get()->map(function ($game) {
+            $game->date = Carbon::parse($game->date . ' ' . $game->time)->format('D, M d, H:i');
+            return $game;
+        });
+
+        $roundOf16Games = Game::where('stage', 'round_of_16')->get()->map(function ($game) {
+            $game->date = Carbon::parse($game->date . ' ' . $game->time)->format('D, M d, H:i');
+            return $game;
+        });
+
+        $quarterFinalGames = Game::where('stage', 'quarter_final')->get()->map(function ($game) {
+            $game->date = Carbon::parse($game->date . ' ' . $game->time)->format('D, M d, H:i');
+            return $game;
+        });
+
+        $semiFinalGames = Game::where('stage', 'semi_final')->get()->map(function ($game) {
+            $game->date = Carbon::parse($game->date . ' ' . $game->time)->format('D, M d, H:i');
+            return $game;
+        });
+
+        $finalGames = Game::where('stage', 'final')->get()->map(function ($game) {
             $game->date = Carbon::parse($game->date . ' ' . $game->time)->format('D, M d, H:i');
             return $game;
         });
 
         return view('livewire.games', [
             'games' => $games,
+            'roundOf16Games' => $roundOf16Games,
+            'quarterFinalGames' => $quarterFinalGames,
+            'semiFinalGames' => $semiFinalGames,
+            'finalGames' => $finalGames,
         ]);
     }
 }
